@@ -1,0 +1,35 @@
+{
+  "name": "@augu/tenugui",
+  "description": "Net protocol for worker_threads that is fast and scalable to send from one main server to loads of clients",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "types": "index.d.ts",
+  "license": "MIT",
+  "author": "Chris \"August\" Hernandez <august@augu.dev>",
+  "repository": "https://github.com/auguwu/Tenugui",
+  "maintainers": [
+    {
+      "name": "Chris \"August\" Hernandez",
+      "url": "https://floofy.dev"
+    },
+    {
+      "name": "John \"Ice\" Burke",
+      "url": "https://github.com/IceeMC"
+    }
+  ],
+  "scripts": {
+    "build": "npm run lint && rm -rf build && tsc",
+    "lint": "eslint src --ext .ts --fix"
+  },
+  "dependencies": {
+    "@augu/immutable": "0.6.0"
+  },
+  "devDependencies": {
+    "@augu/eslint-config": "1.9.0",
+    "@types/node": "14.14.16",
+    "@typescript-eslint/eslint-plugin": "4.11.0",
+    "@typescript-eslint/parser": "4.11.0",
+    "eslint": "7.16.0",
+    "typescript": "4.1.3"
+  }
+}
