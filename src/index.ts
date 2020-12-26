@@ -23,5 +23,6 @@
 const { version: pkgVersion } = require('../package.json');
 
 export const version: string = pkgVersion;
-export * from './Client';
-export * from './Server';
+export * from './internal/Module';
+export * from './internal/Client';
+export * from './internal/Server';

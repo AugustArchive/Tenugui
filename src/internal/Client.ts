@@ -20,6 +20,8 @@
  * SOFTWARE.
  */
 
+import { isMainThread } from 'worker_threads';
+import type { Server } from './Server';
 import EventBus from './EventBus';
 
 interface ClientEvents {
@@ -27,4 +29,6 @@ interface ClientEvents {
 }
 
 /** Represents a client that has established a connection with a [Server] */
-export class Client extends EventBus<ClientEvents> {}
+export class Client extends EventBus<ClientEvents> {
+  private _server: Server;
+}
