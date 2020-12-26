@@ -20,8 +20,37 @@
  * SOFTWARE.
  */
 
-const { version: pkgVersion } = require('../package.json');
+import { Client } from '../internal/Client';
 
-export const version: string = pkgVersion;
-export * from './Client';
-export * from './Server';
+type MaybePromise<T> = T | Promise<T>;
+
+/**
+ * Represents a event from server -> client
+ * @template D The data object structure
+ * @template Refs The references available in this event's context
+ */
+export default class ClientEvent<D extends object, Refs extends object = {}> {
+  /** The client attached */
+  public client: Client;
+
+  /** The references attached to this [Event] */
+  public $refs: Refs;
+
+  /** The data payload from Discord */
+  public data: D;
+
+  /**
+   * Represents a event from server -> client
+   * @param client The client attached
+   * @param data The data payload from Discord
+   */
+  constructor(client: Client, data: D) {
+    this.client = client;
+    this.$refs  = {} as Refs;
+    this.data   = data;
+  }
+
+  process(): MaybePromise<void> {
+    throw new TypeError('Overridable function [Event.process] is not implemented.');
+  }
+}

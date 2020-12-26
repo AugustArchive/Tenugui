@@ -20,8 +20,11 @@
  * SOFTWARE.
  */
 
-const { version: pkgVersion } = require('../package.json');
+import EventBus from './EventBus';
 
-export const version: string = pkgVersion;
-export * from './Client';
-export * from './Server';
+interface ClientEvents {
+  establish(): void;
+}
+
+/** Represents a client that has established a connection with a [Server] */
+export class Client extends EventBus<ClientEvents> {}

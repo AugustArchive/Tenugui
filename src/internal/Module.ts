@@ -20,8 +20,11 @@
  * SOFTWARE.
  */
 
-const { version: pkgVersion } = require('../package.json');
+import type { Client } from './Client';
 
-export const version: string = pkgVersion;
-export * from './Client';
-export * from './Server';
+/**
+ * Represents a [Module], to handle anything with the client or server,
+ * use the `message` event from both client/server to handle TCP messages,
+ * this is for internal modularity
+ */
+export class Module<C extends Client = Client> {}

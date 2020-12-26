@@ -20,8 +20,17 @@
  * SOFTWARE.
  */
 
-const { version: pkgVersion } = require('../package.json');
+import { Collection } from '@augu/immutable';
+import { Module } from './Module';
+import { Client } from './Client';
+import EventBus from './EventBus';
 
-export const version: string = pkgVersion;
-export * from './Client';
-export * from './Server';
+interface ServerEvents {
+  establish(): void;
+}
+
+/**
+ * Represents a server to handle TCP messages to send and handle scaling
+ * with or without Kubernetes
+ */
+export class Server<C extends Client = Client> extends EventBus<ServerEvents> {}
