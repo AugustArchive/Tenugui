@@ -1,5 +1,7 @@
 node_modules/
 build/
+test/
 
 *.log
 *.lock
+.idea/
