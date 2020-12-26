@@ -23,6 +23,7 @@
 import { isMainThread } from 'worker_threads';
 import type { Server } from './Server';
 import EventBus from './EventBus';
+import net from 'net';
 
 interface ClientEvents {
   establish(): void;
@@ -30,5 +31,18 @@ interface ClientEvents {
 
 /** Represents a client that has established a connection with a [Server] */
 export class Client extends EventBus<ClientEvents> {
-  private _server: Server;
+  /** The connected server connection for this [Client] instance, returns `null` if it's not connected */
+  public netConnection!: any;
+
+  /** The connection details, this will be sent with a `CONNECTION_DETAILS` packet from the Server when establishing a connection */
+  public connection!: any;
+
+  /**
+   * Represents a client that has established a connection with a [Server]
+   */
+  constructor() {
+    super();
+
+    if (isMainThread) throw new TypeError('You must do client logic in the worker thread');
+  }
 }
