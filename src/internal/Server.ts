@@ -20,12 +20,12 @@
  * SOFTWARE.
  */
 
+import { Module, ModuleEvents } from './Module';
 import { Collection } from '@augu/immutable';
-import { Module } from './Module';
 import { Client } from './Client';
 import EventBus from './EventBus';
 
-interface ServerEvents {
+interface ServerEvents extends ModuleEvents {
   establish(): void;
 }
 

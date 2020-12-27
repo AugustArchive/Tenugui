@@ -20,12 +20,12 @@
  * SOFTWARE.
  */
 
-import { isMainThread } from 'worker_threads';
+import { Module, ModuleEvents } from './Module';
 import type { Server } from './Server';
 import EventBus from './EventBus';
 import net from 'net';
 
-interface ClientEvents {
+interface ClientEvents extends ModuleEvents {
   establish(): void;
 }
 
@@ -42,7 +42,5 @@ export class Client extends EventBus<ClientEvents> {
    */
   constructor() {
     super();
-
-    if (isMainThread) throw new TypeError('You must do client logic in the worker thread');
   }
 }
